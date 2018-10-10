@@ -1,0 +1,6 @@
+{
+  "id": "styled-preview",
+  "name": "Preview content with your styles applied.",
+  "srcdoc": "extension.html",
+  "fieldTypes": ["Symbol"]
+}
