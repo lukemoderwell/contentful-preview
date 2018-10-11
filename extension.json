@@ -1,6 +1,6 @@
 {
-  "id": "styled-preview",
-  "name": "Preview content with your styles applied.",
+  "id": "crds-styled-preview",
+  "name": "CRDS Styled Preview",
   "srcdoc": "extension.html",
-  "fieldTypes": ["Symbol"]
+  "fieldTypes": ["Text"]
 }
