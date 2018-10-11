@@ -39,17 +39,26 @@
     extension.window.startAutoResizer();
     var converter = new showdown.Converter();
     var previewEl = document.querySelector('[data-styled-preview]');
-    var bodyField = extension.entry.fields.body;
-
-    bodyField.onValueChanged(handleContentChange)
+    var body = extension.entry.fields.body;
+    
+    body.onValueChanged(handleContentChange)
 
     function handleContentChange(value) {
-      var html = convertToHtml(value);
-      previewEl.innerHTML = html;
+      if (value !== undefined) {
+        var html = convertToHtml(value);
+        previewEl.innerHTML = html;
+      } else {
+        setDefaultMessage(previewEl);
+      }
     }
 
     function convertToHtml(src) {
       return converter.makeHtml(src);
+    }
+
+    function setDefaultMessage(preview) {
+      var obMessage = `<p> ✍️ ⚡ 👀 Try editing the body field above to see me update.</p>`;
+			preview.innerHTML = obMessage;
     }
   });
 </script>
