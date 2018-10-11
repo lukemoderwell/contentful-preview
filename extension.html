@@ -39,7 +39,7 @@
     extension.window.startAutoResizer();
     var converter = new showdown.Converter();
     var previewEl = document.querySelector('[data-styled-preview]');
-    var body = extension.entry.fields.body;
+    var body = extension.entry.fields.body || extension.entry.fields.description;
     
     body.onValueChanged(handleContentChange)
 
