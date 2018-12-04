@@ -1,8 +1,8 @@
 <!doctype html>
 
 <head>
-  <link href="https://static.contentful.com/app/main-62e0abc7.css" media="all" rel="stylesheet" type="text/css">
-  <link href="https://static.contentful.com/app/vendor-976872d7.css" media="all" rel="stylesheet" type="text/css">
+  <!-- <link href="https://static.contentful.com/app/main-62e0abc7.css" media="all" rel="stylesheet" type="text/css">
+  <link href="https://static.contentful.com/app/vendor-976872d7.css" media="all" rel="stylesheet" type="text/css"> -->
   <link href="https://contentful.github.io/ui-extensions-sdk/cf-extension.css" media="all" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://unpkg.com/contentful-ui-extensions-sdk@3"></script>
 
@@ -37,7 +37,7 @@
 
   window.contentfulExtension.init(function (extension) {
     extension.window.startAutoResizer();
-    var converter = new showdown.Converter();
+    var converter = new showdown.Converter({requireSpaceBeforeHeadingText: 'true', disableForced4SpacesIndentedSublists: 'true'});
     var previewEl = document.querySelector('[data-styled-preview]');
     var body = extension.entry.fields.body || extension.entry.fields.description;
     
