@@ -1,15 +1,13 @@
 <!doctype html>
 
 <head>
-  <link href="https://static.contentful.com/app/main-62e0abc7.css" media="all" rel="stylesheet" type="text/css">
-  <link href="https://static.contentful.com/app/vendor-976872d7.css" media="all" rel="stylesheet" type="text/css">
   <link href="https://contentful.github.io/ui-extensions-sdk/cf-extension.css" media="all" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://unpkg.com/contentful-ui-extensions-sdk@3"></script>
 
   <!-- Extension Dependencies -->
   <link rel="stylesheet" href="https://use.typekit.net/ccb3vpa.css">
   <link href="//d1tmclqz61gqwd.cloudfront.net/styles/crds-styles-3.0.6.min.css" media="all" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="https://cdn.rawgit.com/showdownjs/showdown/1.8.6/dist/showdown.min.js"></script>
+  <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/kramed@0.5.6/kramed.min.js'></script>
   <style>
     .preview {
       margin-top: 1rem;
@@ -37,10 +35,14 @@
 
   window.contentfulExtension.init(function (extension) {
     extension.window.startAutoResizer();
-    var converter = new showdown.Converter();
     var previewEl = document.querySelector('[data-styled-preview]');
     var body = extension.entry.fields.body || extension.entry.fields.description;
     
+    kramed.setOptions({
+      renderer: new kramed.Renderer(),
+      smartLists: true
+    });
+
     body.onValueChanged(handleContentChange)
 
     function handleContentChange(value) {
@@ -53,7 +55,7 @@
     }
 
     function convertToHtml(src) {
-      return converter.makeHtml(src);
+      return kramed(src);
     }
 
     function setDefaultMessage(preview) {
